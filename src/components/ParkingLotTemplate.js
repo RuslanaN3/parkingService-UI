@@ -3,6 +3,8 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
+import ParkingSlot from "./ParkingSlot";
+import Paper from "@material-ui/core/Paper";
 
 
 const useStyles = makeStyles(theme => ({
@@ -58,14 +60,29 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'space-evenly',
         alignItems: 'center',
         margin: '2vh'
-
+    },
+    suitableDiv: {
+        margin: '4vh 2vh',
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    suitableText: {
+        fontSize: '3vh',
+        color: "#7b7b7b",
+        fontWeight: "400",
+    },
+    suitablePaper: {
+        padding: '2vh 1vh',
+        color: '#e4e7e7',
+        fontWeight: "500",
+        fontSize: "4vh",
+        backgroundColor: "#1f9c29",
+        borderRadius: '10px',
     }
-
 }));
 
-const ParkingLotTemplate = (props) => {
-    const classes = useStyles({});
-    const parkingLot = props.pkLot;
+const ParkingLotTemplate = ({lot, spSlotNumber, ...props}) => {
+    const classes = useStyles();
 
     return (
         <>
@@ -77,12 +94,13 @@ const ParkingLotTemplate = (props) => {
                     </div>
                 </div>
                 <div className={classes.layoutInformation}>
-                    <Typography className={classes.title} variant="h3">PARKING LOT #{parkingLot.id}</Typography>
+                    <Typography className={classes.title} variant="h3">PARKING LOT #{lot.id}</Typography>
                     <Divider/>
-                    <Typography className={classes.subtitle}>Type: {parkingLot.lotType}</Typography>
-                    <Typography className={classes.infoSubtitle}><span style={{color: "#0074E1", fontWeight: '700'}}>{parkingLot.vacantParkingSlotsCount}</span> available
+                    <Typography className={classes.subtitle}>Type: {lot.lotType}</Typography>
+                    <Typography className={classes.infoSubtitle}><span
+                        style={{color: "#0074E1", fontWeight: '700'}}>{lot.vacantParkingSlotsCount}</span> available
                         slots</Typography>
-                    <Typography className={classes.infoSubtitle}>{parkingLot.parkingSlots.length} parking slots</Typography>
+                    <Typography className={classes.infoSubtitle}>{lot.parkingSlots.length} parking slots</Typography>
                     <div className={classes.slotsInfoDiv}>
                         <div style={{display: 'flex'}}>
                             <DirectionsCarIcon fontSize="large" style={{color: "#0074E1"}}/>
@@ -93,6 +111,13 @@ const ParkingLotTemplate = (props) => {
                             <Typography className={classes.text}>occupied</Typography>
                         </div>
                     </div>
+                    {spSlotNumber &&
+
+                    <div className={classes.suitableDiv}>
+                        <Typography className={classes.suitableText}>Suitable slot:</Typography>
+                        <Paper elevation={0} className={classes.suitablePaper}> {spSlotNumber}</Paper>
+                    </div>
+                    }
                 </div>
             </div>
         </>

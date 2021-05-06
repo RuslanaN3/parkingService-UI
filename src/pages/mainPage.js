@@ -74,16 +74,14 @@ const MainPage = () => {
                         {parkingLot.map(pl => <StatComponent parkingLot={pl}/>)}
                     </div>
                 </div>
-                <ParkingLotTemplate pkLot={parkingLot[0]}>
+                <ParkingLotTemplate spSlotNumber={spLotId && spLotId === 1 ? spSlotNumber : undefined} lot={parkingLot[0]}>
                     <ParkingLot11 spSlotNumber={spLotId && spLotId === 1 ? spSlotNumber : undefined}
                                   lot={parkingLot[0]}/>
                 </ParkingLotTemplate>
-                <ParkingLotTemplate pkLot={parkingLot[1]}>
+                <ParkingLotTemplate spSlotNumber={spLotId && spLotId === 2 ? spSlotNumber : undefined} lot={parkingLot[1]}>
                     <ParkingLot2 spSlotNumber={spLotId && spLotId === 2 ? spSlotNumber : undefined}
                                  lot={parkingLot[1]}/>
                 </ParkingLotTemplate>
-
-
             </Carousel>}
         </div>
     )
