@@ -5,6 +5,8 @@ import Divider from "@material-ui/core/Divider";
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import ParkingSlot from "./ParkingSlot";
 import Paper from "@material-ui/core/Paper";
+import AlertDialog from "./AlertDialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
 
 
 const useStyles = makeStyles(theme => ({
@@ -81,7 +83,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const ParkingLotTemplate = ({lot, spSlotNumber, ...props}) => {
+const ParkingLotTemplate = ({lot, spSlotNumber, plateNotDetected, ...props}) => {
     const classes = useStyles();
 
     return (
@@ -119,6 +121,8 @@ const ParkingLotTemplate = ({lot, spSlotNumber, ...props}) => {
                     </div>
                     }
                 </div>
+                {!plateNotDetected &&
+                <AlertDialog open={lot.vacantParkingSlotsCount === 0} message="Sorry, there aren't available lots"/>}
             </div>
         </>
     )
