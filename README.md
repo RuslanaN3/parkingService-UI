@@ -2,6 +2,8 @@
 
 ###  Front-end part of parking assistant application.
 
+Material-UI simple and customizable component library used in project.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 In the project directory, you can run:
 
