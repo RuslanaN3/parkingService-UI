@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import axios from "axios";
-import ParkingLot1 from "../components/ParkingLot1";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 import ParkingLot11 from "../components/ParkingLot1";
@@ -12,6 +9,7 @@ import ParkingLotTemplate from "../components/ParkingLotTemplate";
 import ParkingLot2 from "../components/ParkingLot2";
 import StatComponent from "../components/StatComponent";
 import AlertDialog from "../components/AlertDialog";
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -60,15 +58,14 @@ const MainPage = () => {
         }, 10000);
     };
 
-    let stompClient;
 
     useEffect(() => {
+        let stompClient;
         const socket = new SockJS('http://localhost:8080/ws');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, () => {
             stompClient.subscribe('/topic/parking-slots-update', (data) => {
                 setParkingLot(JSON.parse(data.body));
-                setLoading(true)
             });
             stompClient.subscribe('/topic/suitable-parking-slot', (data) => {
                 const spLotDto = JSON.parse(data.body);
@@ -80,8 +77,14 @@ const MainPage = () => {
 
             });
         });
+        axios.get('api/parking-lot')
+            .then(res => {
+                console.log(res.data)
+                setParkingLot(res.data);
+                setLoading(true);
+            });
         return () => socket.close();
-    }, [loading]);
+    }, []);
 
 
     return (

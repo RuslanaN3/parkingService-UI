@@ -5,7 +5,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Town from "../assets/img/illustr_town.svg"
 import Notify from "../assets/img/notify.svg"
-import {makeStyles, withStyles} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme => ({
@@ -42,7 +42,7 @@ const AlertDialog = ({open, message, notify}) => {
                 <DialogContentText className={classes.contentText} variant="h4">
                     {message}
                 </DialogContentText>
-                <img className={classes.town} src={notify ? Notify : Town} />
+                <img alt="warning" className={classes.town} src={notify ? Notify : Town} />
             </DialogContent>
         </Dialog>
     )

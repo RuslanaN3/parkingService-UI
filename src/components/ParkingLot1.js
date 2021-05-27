@@ -11,7 +11,6 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flex: 4,
         justifyContent: 'center',
-
     },
     section: {
         display: 'flex',

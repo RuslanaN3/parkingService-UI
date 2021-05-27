@@ -38,9 +38,16 @@ const StatComponent = ({parkingLot}) => {
 
     return (
         <Paper elevation={0} className={classes.statDiv}>
-            <Typography className={classes.statTitle}>PARKING LOT {parkingLot.id}</Typography>
-            <Typography className={classes.statSubtitle}>TYPE: {parkingLot.lotType}</Typography>
-            <Typography className={classes.statVacant}>{parkingLot.vacantParkingSlotsCount} <span className={classes.statVacantSmall}>available</span></Typography>
+            <Typography className={classes.statTitle}>
+                PARKING LOT {parkingLot.id}
+            </Typography>
+            <Typography className={classes.statSubtitle}>
+                TYPE: {parkingLot.lotType}
+            </Typography>
+            <Typography className={classes.statVacant}>
+                {parkingLot.vacantParkingSlotsCount}
+                <span className={classes.statVacantSmall}> available</span>
+            </Typography>
         </Paper>
     )
 };

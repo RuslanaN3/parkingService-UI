@@ -3,10 +3,8 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
-import ParkingSlot from "./ParkingSlot";
 import Paper from "@material-ui/core/Paper";
 import AlertDialog from "./AlertDialog";
-import DialogContentText from "@material-ui/core/DialogContentText";
 
 
 const useStyles = makeStyles(theme => ({

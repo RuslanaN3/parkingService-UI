@@ -2,7 +2,6 @@ import {makeStyles} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper/Paper";
 import React from "react";
 
-
 const useStyles = makeStyles(theme => ({
     slot: {
         width: '3vw',
